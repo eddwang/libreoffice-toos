@@ -29,8 +29,8 @@ def console(*args, **kwargs):
 
     desktop = XSCRIPTCONTEXT.getDesktop()
     doc = desktop.getCurrentComponent()
-    __file__ = os.path.join(str(Path.home()),"python") if doc.Location == "" else doc.Location
-    os.chdir(fileUrlToSystemPath(os.path.dirname(__file__)))
+    __file__ = os.path.join(str(Path.home()),".config") if doc.Location == "" else fileUrlToSystemPath(doc.Location)
+    os.chdir(os.path.dirname(__file__))
 
     kwargs.setdefault('loc', {})
     kwargs['loc'].setdefault('XSCRIPTCONTEXT', XSCRIPTCONTEXT)
